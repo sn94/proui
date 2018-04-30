@@ -92,7 +92,7 @@
                                     <a onclick="pedirVista( '<?= base_url("index.php/welcome/central")?>');"  href="#" class=" active"><i class="gi gi-home sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">Inicio</span></a>
                                 </li>
                                  <li>
-                                    <a onclick="pedirVista( '<?= base_url("index.php/Persona")?>');" href="#"><i class="gi gi-eye_open sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">Consultas</span></a>
+                                    <a onclick="pedirVista( '<?= base_url("index.php/Persona/paginar")?>');" href="#"><i class="gi gi-eye_open sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">Consultas</span></a>
                                 </li>
                                 <li class="sidebar-header">
                                     <span class="sidebar-header-options clearfix"><a href="javascript:void(0)" data-toggle="tooltip" title="Quick Settings"><i class="gi gi-settings"></i></a><a href="javascript:void(0)" data-toggle="tooltip" title="Create the most amazing pages with the widget kit!"><i class="gi gi-lightbulb"></i></a></span>

@@ -50,9 +50,13 @@ error_reporting(0);
         <!-- END Icons -->
 
         <!-- Stylesheets -->
-        <!-- Bootstrap is included in its original form, unaltered -->
-        <link rel="stylesheet" href="<?= base_url("assets")?>/css/bootstrap.min.css">
-
+        <!-- Bootstrap is included in its original form, unaltered-->
+    
+   <link rel="stylesheet" href="<?= base_url("assets")?>/css/bootstrap.min.css">
+   <link rel="stylesheet" href="<?= base_url("assets")?>/css/bootstrap-grid.min.css">
+   <link rel="stylesheet" href="<?= base_url("assets")?>/css/bootstrap-reboot.min.css">
+   
+        
         <!-- Related styles of various icon packs and plugins -->
         <link rel="stylesheet" href="<?= base_url("assets")?>/css/plugins.css">
 
@@ -66,8 +70,11 @@ error_reporting(0);
         <!-- END Stylesheets -->
 
         <!-- Modernizr (browser feature detection library) -->
-        <script src="<?= base_url("assets")?>/js/vendor/modernizr.min.js"></script>
-    </head>
+       
+       <script src="<?= base_url("assets")?>/js/vendor/modernizr.min.js"></script>
+        
+       
+       </head>
     <body>
         <!-- Page Wrapper -->
         <!-- In the PHP version you can set the following options from inc/config file -->
@@ -203,37 +210,48 @@ error_reporting(0);
         <!-- END User Settings -->
 
         <!-- jQuery, Bootstrap.js, jQuery plugins and Custom JS code -->
-        <script src="<?= base_url("assets")?>/js/vendor/jquery.min.js"></script>
+        <script src="<?= base_url("assets")?>/js/vendor/jquery-3.3.1.min.js"></script>
         <script src="<?= base_url("assets")?>/js/vendor/bootstrap.min.js"></script>
-        <script src="<?= base_url("assets")?>/js/plugins.js"></script>
-        <script src="<?= base_url("assets")?>/js/app.js"></script>
-
+       
         <!-- Load and execute javascript code used only in this page -->
         <script src="<?= base_url("assets")?>/js/pages/tablesDatatables.js"></script>
         <script>$(function(){ TablesDatatables.init(); });</script>
+      <!--
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+ <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+-->
+ <script src="<?= base_url("assets")?>/js/plugins.js"></script>
+ <script src="<?= base_url("assets")?>/js/app.js"></script>
+ 
         <script>
            
+           /** Devuelve la cadena html correspondiente a la imagen que sirve de loader**/
            function ImageLoader(){
            var imag= "<img class='img-responsive center-block' src='<?= base_url("assets/img/loader.gif")?>'/>";
            return imag;
            }
            
-            
-           function pedirVista(arg){
+            /** Actualiza por defecto solo el div page-content ***/
+           function pedirVista(arg, contenedor="#page-content"){
+               
             $.ajax(
                        {
                            url: arg ,
                            beforeSend: function(){
-                               $("#page-content").html( ImageLoader() );
+                               $( contenedor).html( ImageLoader() );
                            },
-                           success: function(  data ){
-                               $("#page-content").html( data );
+                           success: function(  data ){ 
+                               $( contenedor).html( data );
                                                 }//end success
                        });//end call to ajax
     
             }
             
             
+            
+             
+            /***Se ejecuta despues de cargar completamente el documento ***/
            $(document).ready( function(){
               pedirVista( "<?= base_url("index.php/welcome/central")?>" );
            });
