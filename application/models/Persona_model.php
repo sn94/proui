@@ -8,12 +8,61 @@
 
 
 class Persona_model extends CI_Model{
-    
-    
-    public function __construct() {
+ 
+
+  private $tabla= "personas";
+
+
+
+
+  public function __construct() {
         parent::__construct();
-        $this->load->database();
+        $this->load->database();// carga db trabajo
     }
+    
+    
+    
+   /********
+    * Metadatos
+    * 
+    * 
+    */ 
+  
+    
+    
+    
+  public function campos(){
+     return  $this->db->list_fields( $this->tabla );
+  }
+  
+  
+  public function  total_registros(){
+    $valor= $this->db->count_all("pais"); return $valor;
+  }
+
+
+
+
+
+
+  /*********
+   * 
+   * Recuperacion de datos
+   * 
+   * 
+   * 
+   */
+  
+  public function obt_lista($nro_rows, $desde_nro_fila){
+   $quer= $this->db->query("select * from personas limit $nro_rows offset $desde_nro_fila");   
+   $res= $quer->result();//  Retorna una lista o arreglo de objetos
+   return $res;
+      
+  }
+  
+  
+  
+  
     
     
     
