@@ -36,10 +36,16 @@ class Persona_model extends CI_Model{
   }
   
   
-  public function  total_registros(){
-    $valor= $this->db->count_all("pais"); return $valor;
-  }
+//  public function  total_registros(){
+//    $valor= $this->db->count_all( $this->tabla ); return $valor;
+//  }
 
+ 
+  public function  total_registros(){
+      $this->db->select("select nrodo*) as numrows");
+      $quer= $this->db->get("personas");
+    $valor= $quer->row()->numrows; return $valor;
+  }
 
 
 
@@ -54,7 +60,7 @@ class Persona_model extends CI_Model{
    */
   
   public function obt_lista($nro_rows, $desde_nro_fila){
-   $quer= $this->db->query("select * from personas limit $nro_rows offset $desde_nro_fila");   
+   $quer= $this->db->query("select * from {$this->tabla} limit $nro_rows offset $desde_nro_fila");   
    $res= $quer->result();//  Retorna una lista o arreglo de objetos
    return $res;
       

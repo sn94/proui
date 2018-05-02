@@ -1,11 +1,9 @@
+ <ul class="pager">
+     <li class="previous"><a onclick="pedirVista('<?= $links['prev']?>','#person-result')"   href="#">Anterior</a></li>
+  <li class="next"><a onclick="pedirVista('<?= $links['next']?>','#person-result')" href="#">Siguiente</a></li>
+</ul> 
 
-<div class="paginas-perso">
-    <?php   echo isset($links)? $links : "sin links";  ?>
-</div>     
-<script>
-    $(".paginas-perso a").addClass("btn btn-success");
-      $(".paginas-perso strong").addClass("btn btn-primary");
-</script>
+
 
 
 <?php    foreach ($lista as $obj){  ?>
