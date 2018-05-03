@@ -17,7 +17,7 @@
         <span class="badge badge-primary"><?= $obj->nrodoc ?> </span>
        <?= $obj->nombre ?> <?= $obj->apellido ?>
     </h4>
-    <p>Lorem ipsum...</p>
+    <p><?= $obj->situacion ?></p>
     <div class="btn-group">
                           <button type="button" class="btn btn-primary"><i class=" fa fa-address-card"></i></button>
                           <button type="button" class="btn btn-primary"><i class="fa fa-edit"></i></button>

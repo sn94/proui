@@ -35,17 +35,8 @@ class Persona_model extends CI_Model{
      return  $this->db->list_fields( $this->tabla );
   }
   
-  
-//  public function  total_registros(){
-//    $valor= $this->db->count_all( $this->tabla ); return $valor;
-//  }
-
  
-  public function  total_registros(){
-      $this->db->select("select nrodo*) as numrows");
-      $quer= $this->db->get("personas");
-    $valor= $quer->row()->numrows; return $valor;
-  }
+   
 
 
 
@@ -59,18 +50,48 @@ class Persona_model extends CI_Model{
    * 
    */
   
-  public function obt_lista($nro_rows, $desde_nro_fila){
-   $quer= $this->db->query("select * from {$this->tabla} limit $nro_rows offset $desde_nro_fila");   
-   $res= $quer->result();//  Retorna una lista o arreglo de objetos
-   return $res;
+  public function obt_lista_simply($nro_rows, $desde_nro_fila, $params= array()){
       
+   
+   $sql="select p.nrodoc,p.nombre,p.apellido,"
+           . "(case c.est_jud when 'ANTE' then 'Tiene antecedentes' "
+           . "else 'No tiene antecedentes' end) as situacion "
+           . "from {$this->tabla} p join cap001 c "
+   . "on c.cidcap=p.nrodoc limit $nro_rows offset $desde_nro_fila";
+       
+   $quer= $this->db->query( $sql);   
+   $res= $quer->result();//  Retorna una lista o arreglo de objetos
+   return $res;   
   }
   
   
   
   
-    
-    
+  
+  /***Recupera todos los campos ************/
+  public function obt_lista($nro_rows, $desde_nro_fila){
+   $quer= $this->db->query("select * from {$this->tabla} limit $nro_rows offset $desde_nro_fila");   
+   $res= $quer->result();//  Retorna una lista o arreglo de objetos
+   return $res;   
+  }
+  
+  
+  
+  public function obt_lista_custom($nro_rows, $desde_nro_fila){
+      
+      //campos
+      
+      //condicion
+      
+      //tabla
+      
+   $quer= $this->db->query("select * from {$this->tabla} limit $nro_rows offset $desde_nro_fila");   
+   $res= $quer->result();//  Retorna una lista o arreglo de objetos
+   return $res;   
+  }
+  
+  
+   
     
     
     

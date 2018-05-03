@@ -5,22 +5,21 @@
                                     <i class="fa fa-table"></i>Personas<br><small>Búsqueda de registros</small>
                                 </h1>
                                 
-                                
-                                
+                                <?php include("application/views/Persona/form_busqueda.php"); ?>
                                 
                                 
                             </div>
                         </div>
-                        <ul class="breadcrumb breadcrumb-top">
+                       <!-- <ul class="breadcrumb breadcrumb-top">
                             <li>Resultados</li>
                             <li><a href="">Datatables</a></li>
-                        </ul>
+                        </ul>-->
                         <!-- END Datatables Header -->
 
-                        <!-- Datatables Content -->
+                        <!-- Datatables Content    -->
                         <div class="block full">
                             <div class="block-title">
-                                <h2><strong>Datatables</strong> integration</h2>
+                                <h2><strong>Resultados</strong></h2>
                             </div>
                             
                            <div class="container-fluid"  id="person-result">
