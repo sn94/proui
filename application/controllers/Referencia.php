@@ -20,7 +20,9 @@ class Referencia extends CI_Controller{
     public function nacionalidad(){
         echo $this->Referencias_model->nacionalidadJson();
     }
-    
+    public function nacio_cod($arg){
+        echo $this->Referencias_model->codigo_nacionalidad( $arg );
+    }
     
     
     

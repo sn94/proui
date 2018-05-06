@@ -24,9 +24,23 @@
                             
                            <div class="container-fluid"  id="person-result">
                                
+                
+    
                            <?php  
-                            include("application/views/Persona/lista.php")
+                           
+                           
+                            include("application/views/Persona/lista_tab.php")
+                          
+                           
                            ?>
+                           
+                           
+                           
+                           
+                           
+                           
+                           
+                           
                            </div>
                             
                         </div>

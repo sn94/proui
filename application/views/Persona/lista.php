@@ -1,6 +1,6 @@
  <ul class="pager">
-     <li class="previous"><a onclick="pedirVista('<?= $links['prev']?>','#person-result')"   href="#">Anterior</a></li>
-  <li class="next"><a onclick="pedirVista('<?= $links['next']?>','#person-result')" href="#">Siguiente</a></li>
+  <li class="previous"><a onclick="procesarPaginacion('<?= $links['prev']?>')"   href="#">Anterior</a></li>
+  <li class="next"><a onclick="procesarPaginacion('<?= $links['next']?>')" href="#">Siguiente</a></li>
 </ul> 
 
 

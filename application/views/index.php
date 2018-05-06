@@ -2,9 +2,10 @@
 session_start();
 error_reporting(0);
 
- $sql ="select nrodoc,nombre,apellido,fechanac,lugnac from personas where nombre ilike 'VICTOR%' and apellido ilike 'ROMERO%'";
+ $sql ="select nrodoc,nombre,apellido,fechanac,lugnac "
+         . "from personas where nombre ilike 'VICTOR%' and apellido ilike 'ROMERO%'";
  
-    /*  include"inc/cone98.php"; 
+ /*     include"inc/cone98.php"; 
      $rs = $mdb2->query($sql);
      if (PEAR::isError($rs)) {
         // die($rs->getMessage());
@@ -20,12 +21,14 @@ error_reporting(0);
 	    $fechanac[$nn]=$row['fechanac'];
 		$lugnac[$nn]=$row['lugnac'];
 		$nn++;
-	 }	*/   
+	 }	*/ 
  
 ?>
 <!DOCTYPE html>
 <!--[if IE 9]>         <html class="no-js lt-ie10" lang="en"> <![endif]-->
-<!--[if gt IE 9]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<!--[if gt IE 9]><!--> 
+
+<html class="no-js" lang="en"> <!--<![endif]-->
     <head>
         <meta charset="utf-8">
 
@@ -53,8 +56,7 @@ error_reporting(0);
         <!-- Bootstrap is included in its original form, unaltered-->
     
    <link rel="stylesheet" href="<?= base_url("assets")?>/css/bootstrap.min.css">
-  
-  <link rel="stylesheet" href="<?= base_url("assets")?>/css/jquery-ui.min.css"> 
+   <link rel="stylesheet" href="<?= base_url("assets")?>/css/jquery-ui.min.css"> 
   
   
         <!-- Related styles of various icon packs and plugins -->
@@ -210,16 +212,21 @@ error_reporting(0);
         <!-- END User Settings -->
 
         <!-- jQuery, Bootstrap.js, jQuery plugins and Custom JS code -->
-        <script src="<?= base_url("assets")?>/js/vendor/jquery.min.js"></script>
-        <script src="<?= base_url("assets")?>/js/vendor/bootstrap.min.js"></script>
-        <script src="<?= base_url("assets")?>/js/vendor/jquery.validate.min.js"></script>
-        <script src="<?= base_url("assets")?>/js/vendor/jquery-ui.min.js"></script>
-       
-        <!-- Load and execute javascript code used only in this page -->
+        
+        <script src="<?= base_url("assets/js/vendor/jquery.min.js")?>"></script>
+        <script src="<?= base_url("assets/js/vendor/bootstrap.min.js")?>"></script>
+       <script src="<?= base_url("assets")?>/js/plugins.js"></script>
+        <script src="<?= base_url("assets")?>/js/app.js"></script>
+        <script src="<?= base_url("assets")?>/js/pages/index.js"></script>
+        
+        
+        <script src="<?= base_url("assets/js/vendor/jquery.validate.min.js")?>"></script>
+       <script src="<?= base_url("assets/js/vendor/jquery-ui.min.js")?>"> </script>
+        
+      
         <script src="<?= base_url("assets")?>/js/pages/tablesDatatables.js"></script>
         <script>$(function(){ TablesDatatables.init(); });</script>
-        <script src="<?= base_url("assets")?>/js/plugins.js"></script>
-        <script src="<?= base_url("assets")?>/js/app.js"></script>
+
 
         <script>
             
@@ -228,7 +235,7 @@ error_reporting(0);
    var objDate= {
    inline: true, dateFormat:"yy-mm-dd",
    dayNames: [ "Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado" ],
-   dayNamesMin: [ "Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa``" ],
+   dayNamesMin: [ "Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa" ],
    monthNames: [ "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" ]
 };
 
@@ -245,7 +252,7 @@ error_reporting(0);
            
             /** Actualiza por defecto solo el div page-content ***/
            function pedirVista(arg, contenedor="#page-content",metodo="get",datos={}){
-               
+            
             $.ajax(
                        {
                            url: arg ,
@@ -257,35 +264,93 @@ error_reporting(0);
                            success: function(  data ){ 
                                $( contenedor).html( data );
                                                 }//end success
+                                                ,
+                           error: function(xhr, textStatus, errorThrown){
+                           console.log( textStatus," ", errorThrown);
+    
+                                }
                        });//end call to ajax
     
             }
             
             
+            function pedirContenido(arg){
+            var contenido="";
+            $.ajax(
+                       {
+                           url: arg ,
+                           data: datos,
+                           method: metodo,
+                           success: function(  data ){ 
+                              contenido= data;
+                                                }//end success
+                                                ,
+                           error: function(xhr, textStatus, errorThrown){
+                           console.log( textStatus," ", errorThrown);
+    
+                                }
+                       });//end call to ajax
+                       return contenido;
+            }
+            
+            
+            
         
         function validar_nacionali(arg){
-        for(var c=0; c < list_nacions.length; c++){
-           if( arg === list_nacions[c])
-               return true;
+            if(arg=== ""){
+              return true;
+            }else{
+                 for(var c=0; c < list_nacions.length; c++){
+           if( arg.trim() === list_nacions[c].trim() )
+             { 
+                 obtenerCodigoNac( list_nacions[c].trim() );
+                  return true;}
         }
         
         return false;
+            }/***************/
        }
              
+        function obtenerCodigoNac( arg){
+   $.ajax( {
+       url: "<?= base_url("index.php/Referencia/nacio_cod/")?>"+arg,
+       success: function( data ) {
+       console.log( data) ;
+  $( "#form-busqueda input:hidden[name=cod-nac]" ).val( data ); 
+}
+       
+   });
+        }
          function procesarBusqueda(event,  contexto ){
-             
-            event.preventDefault();
-               //validar nacionalidad
-            var elem= "#"+$(contexto).attr("id")+" input[name=nacio]"; 
-             validar_nacionali( $(elem).val()  ) ; 
-             //validar fecha
+            
+           if(event){ event.preventDefault(); event.stopPropagation();}
+            //validar nacionalidad
+            var elem= "#"+$(contexto).attr("id")+" input[name=nacio-des]"; 
+            var nac_var= validar_nacionali( $(elem).val()  ) ; 
+            if(nac_var){
+               var datos= $(contexto).serialize(); 
+             var accion=  $(contexto).attr("action"); 
+            pedirVista(accion, "#person-result","post", datos);  
                 
-             var datos= $(contexto).serialize(); 
-             var accion=  $(contexto).attr("action");
-            pedirVista(accion, "#person-result","post", datos);
+            }else{
+                alert("Indique una nacionalidad valida");
+            }
+             
          }
     
     
+     function procesarPaginacion( url ){
+        //validar nacionalidad
+            var elem= "#"+$("#form-busqueda").attr("id")+" input[name=nacio]"; 
+            var nac_var= validar_nacionali( $(elem).val()  ) ; 
+             //validar fecha
+                
+             var datos= $("#form-busqueda").serialize(); 
+             var accion= url; 
+            pedirVista(accion, "#person-result","post", datos);
+         }
+         
+         
      
     
         function cargarNacionalidades(){
@@ -302,11 +367,15 @@ error_reporting(0);
         }
         
         
+     
+    
+    
     
         /***Se ejecuta despues de cargar completamente el documento ***/
         $(document).ready( function(){
               pedirVista( "<?= base_url("index.php/welcome/central")?>" );
               cargarNacionalidades();
+              
         });
            
            

@@ -9,11 +9,11 @@ public function __construct(){
    
 }  
     
-public function nacionalidades_cod($arg){
-    $condicion="  where idnacio=$arg";
-$query= $this->db->query("select idnacio, descrip from nacio ".$condicion);
-$queryr=  $query->result_array();
-return $queryr;
+public function codigo_nacionalidad($arg){
+    $condicion="  where descrip ilike '%$arg%'";
+$query= $this->db->query("select idnacio from nacio  $condicion");
+$queryr=  $query->row();
+return $queryr->idnacio;
   
     
 }
@@ -25,30 +25,9 @@ $queryr=  $query->result_array();
 return json_encode($queryr);
  }
 
-public function nacionalidades($arg=""){
-    $condicion="";
-if( $arg !=""){
-    $arg=  strtolower(trim( $arg ));$condicion=" where lower(trim(descrip)) like '%$arg%'   limit 5 offset 0";
-$query= $this->db->query("select idnacio, descrip from nacio ".$condicion);
-$queryr=  $query->result_array();
-return $queryr;
  
-}else{ return array();  }
-    
-}
 
-
-public function nacionali_json($arg=""){
-$condicion="";
-if( $arg !=""){
-    $arg=  strtolower(trim( $arg ));
-    $condicion=" where lower(trim(descrip)) like '%$arg%'   limit 5 offset 0";
-}
-$query= $this->db->query("select idnacio, descrip from nacio ".$condicion);
-$queryr=  $query->result_array();
-$jsonq= json_encode(  $queryr);
- return $jsonq;
-}
+ 
 
 
 public function profesiones($arg=""){

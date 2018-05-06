@@ -18,6 +18,8 @@ class Persona_model extends CI_Model{
   public function __construct() {
         parent::__construct();
         $this->load->database();// carga db trabajo
+       
+        
     }
     
     
@@ -50,15 +52,22 @@ class Persona_model extends CI_Model{
    * 
    */
   
-  public function obt_lista_simply($nro_rows, $desde_nro_fila, $params= array()){
-      
-   
-   $sql="select p.nrodoc,p.nombre,p.apellido,"
+  
+  
+  public function obt_lista_simply($nro_rows, $desde_nro_fila, $params= ""){
+  $sql=""; 
+ 
+      if( !$params){
+           $sql="select p.nrodoc,p.nombre,p.apellido,"
            . "(case c.est_jud when 'ANTE' then 'Tiene antecedentes' "
            . "else 'No tiene antecedentes' end) as situacion "
            . "from {$this->tabla} p join cap001 c "
    . "on c.cidcap=p.nrodoc limit $nro_rows offset $desde_nro_fila";
-       
+      }else{
+          $sql= "$params limit $nro_rows offset $desde_nro_fila";
+      }
+   
+     
    $quer= $this->db->query( $sql);   
    $res= $quer->result();//  Retorna una lista o arreglo de objetos
    return $res;   
@@ -95,5 +104,24 @@ class Persona_model extends CI_Model{
     
     
     
-    
+     public function search( $params= ""){
+  $sql=""; 
+ 
+      if( !$params){
+           $sql="select p.nrodoc,concat(p.nombre,concat(' ',p.apellido)) as nombre,"
+           . "  c.est_jud  as situacion "
+           . "from {$this->tabla} p join cap001 c "
+   . "on c.cidcap=p.nrodoc where concat p.nombre like 'JHON%' LIMIT 100";
+          
+      }else{
+          $sql= "$params ";  
+      }
+       
+  $quer= $this->db->query( $sql);   
+   $res= $quer->result();//  Retorna una lista o arreglo de objetos
+   //$jsondata= json_encode($res);
+   return $res;  
+  }
+  
+  
 }
