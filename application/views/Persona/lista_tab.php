@@ -19,16 +19,11 @@
 </table>
 
 
-<script>
-$( function(){  
-                 
-     $('#table-id').DataTable( );
+<script >
     
-     
-    
-    
-    
-    });
+$(document).ready(  function(){   
+     $('#table-id').DataTable();  
+    })    ;
 
 </script>
     

@@ -214,18 +214,16 @@ error_reporting(0);
         <!-- jQuery, Bootstrap.js, jQuery plugins and Custom JS code -->
         
         <script src="<?= base_url("assets/js/vendor/jquery.min.js")?>"></script>
-        <script src="<?= base_url("assets/js/vendor/bootstrap.min.js")?>"></script>
+        <script src="<?= base_url("assets/js/vendor")?>/bootstrap.min.js?v=2"></script>
        <script src="<?= base_url("assets")?>/js/plugins.js"></script>
-        <script src="<?= base_url("assets")?>/js/app.js"></script>
-        <script src="<?= base_url("assets")?>/js/pages/index.js"></script>
-        
+        <script src="<?= base_url("assets")?>/js/app.js"></script> 
         
         <script src="<?= base_url("assets/js/vendor/jquery.validate.min.js")?>"></script>
        <script src="<?= base_url("assets/js/vendor/jquery-ui.min.js")?>"> </script>
         
       
         <script src="<?= base_url("assets")?>/js/pages/tablesDatatables.js"></script>
-        <script>$(function(){ TablesDatatables.init(); });</script>
+        <script> $(function(){ TablesDatatables.init(); }); </script>
 
 
         <script>
@@ -250,6 +248,25 @@ error_reporting(0);
            return imag;
            }
            
+           
+            function cargarNacionalidades(){
+        var url=  "<?= base_url("index.php/referencia/nacionalidad")?>";
+        
+        $.getJSON( url, function(data){
+            
+        Object.keys( data).map( function(keyword){
+            list_nacions.push( data[keyword].descrip);
+        } );
+        }); 
+        
+      
+        }
+        
+        
+        
+        
+        /************Formularios y peticiones***************/
+        
             /** Actualiza por defecto solo el div page-content ***/
            function pedirVista(arg, contenedor="#page-content",metodo="get",datos={}){
             
@@ -296,22 +313,94 @@ error_reporting(0);
             
             
         
-        function validar_nacionali(arg){
-            if(arg=== ""){
-              return true;
+      
+             
+       
+       /*** 
+        * 
+        * Efectua las validaciones pertinentes respecto a campos de
+        * nacionalidad, y edades. El objetivo es limpiar los datos y enviarlos, 
+        * evitando procesamiento innecesario en el servidor para transformar los
+        * datos
+        * @return {undefined}
+        */
+       
+       function validar_nacionali(arg){
+            if(arg=== ""){  return true;
             }else{
                  for(var c=0; c < list_nacions.length; c++){
            if( arg.trim() === list_nacions[c].trim() )
-             { 
-                 obtenerCodigoNac( list_nacions[c].trim() );
-                  return true;}
-        }
-        
-        return false;
+             {  obtenerCodigoNac( list_nacions[c].trim() );
+                return true;}                              }
+         $("#validation-msg").html("Indique una nacionalidad valida");
+         $("#validation-msg").dialog(); 
+         return false;
             }/***************/
        }
+       
+       function validar_edades( edadmin, edadmax){
+       //anio actual
+            var curr= new Date().getFullYear();
+            var aniomin= $("#form-busqueda input:hidden[name=aniomin]");
+            var aniomax= $("#form-busqueda input:hidden[name=aniomax]");
+            var ok= false;
+
+            if( edadmin ){
+                var x_1= parseInt(curr)-parseInt(edadmin); 
+                aniomin.val(  x_1+"-12-31");
+                 if( edadmax ){
+                     var x_2= parseInt(curr)-parseInt(edadmax); 
+                     aniomax.val(  x_2+"-01-01");   }
+                 ok= true;
+                
+             }else{ 
+                 if(edadmax){  
+                     $("#validation-msg").html("Indique una edad minima");
+                     $("#validation-msg").dialog();  
+                 }else{
+                     ok= true;
+                 }
+             }
+
+             return ok;
+        }
+       
+
+        function validacionBusqueda( contexto){
+            //validar nacionalidad
+            var nacioDes= "#"+$(contexto).attr("id")+" input[name=nacio-des]"; 
+            var nac_vali= validar_nacionali( $(nacioDes).val()  ) ;
+            //validar edades
+           var edad1= "#"+$(contexto).attr("id")+" input[name=edadmin]";
+           var edad2= "#"+$(contexto).attr("id")+" input[name=edadmax]";
+           var edad_vali= validar_edades( $(edad1).val(), $(edad2).val()  ) ;
+           
+           return nac_vali && edad_vali;
+       }
+       
+       /*****
+        * 
+        * @param {type} event submit
+        * @param {type} contexto del formulario que se procesa
+        * @return {undefined} no retorna nada
+        */
+         function procesarBusqueda(event,  contexto ){
+            
+           if(event){ event.preventDefault(); event.stopPropagation();}
+            
+            if(  validacionBusqueda( contexto )  ){ //Validacion exitosa
+               var datos= $(contexto).serialize(); 
+                var accion=  $(contexto).attr("action"); 
+                pedirVista(accion, "#person-result","post", datos);  
+                
+            }else{
+               
+            }
              
-        function obtenerCodigoNac( arg){
+         }/*************/
+    
+             
+      function obtenerCodigoNac( arg){
    $.ajax( {
        url: "<?= base_url("index.php/Referencia/nacio_cod/")?>"+arg,
        success: function( data ) {
@@ -319,25 +408,13 @@ error_reporting(0);
   $( "#form-busqueda input:hidden[name=cod-nac]" ).val( data ); 
 }
        
-   });
-        }
-         function procesarBusqueda(event,  contexto ){
-            
-           if(event){ event.preventDefault(); event.stopPropagation();}
-            //validar nacionalidad
-            var elem= "#"+$(contexto).attr("id")+" input[name=nacio-des]"; 
-            var nac_var= validar_nacionali( $(elem).val()  ) ; 
-            if(nac_var){
-               var datos= $(contexto).serialize(); 
-             var accion=  $(contexto).attr("action"); 
-            pedirVista(accion, "#person-result","post", datos);  
-                
-            }else{
-                alert("Indique una nacionalidad valida");
-            }
-             
-         }
-    
+   }); }
+   
+      
+       
+        
+        
+     
     
      function procesarPaginacion( url ){
         //validar nacionalidad
@@ -350,25 +427,7 @@ error_reporting(0);
             pedirVista(accion, "#person-result","post", datos);
          }
          
-         
-     
-    
-        function cargarNacionalidades(){
-        var url=  "<?= base_url("index.php/referencia/nacionalidad")?>";
-        
-        $.getJSON( url, function(data){
-            
-        Object.keys( data).map( function(keyword){
-            list_nacions.push( data[keyword].descrip);
-        } );
-        }); 
-        
-      
-        }
-        
-        
-     
-    
+
     
     
         /***Se ejecuta despues de cargar completamente el documento ***/

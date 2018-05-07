@@ -138,7 +138,7 @@ class Persona extends CI_Controller{
       */
      public function buscar(){
       $this->set_sql( $this->Consulta_model->build_sql() ); 
-     echo $this->get_sql();
+      
          //$this->paginar1();
        $datos['lista']= $this->Persona_model->search( $this->get_sql());  
        $this->load->view("Persona/lista_tab", $datos );

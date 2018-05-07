@@ -11,7 +11,7 @@ class Consulta_model extends CI_Model{
   private $nrodoc;
   private $nombre;
   private $apellido;
-  private $edad_min;
+  private $edad_min;//en realidad es un fecha que se construye a partir de la edad
   private $edad_max;
   private $nacio;
   private $sexo;
@@ -46,8 +46,8 @@ class Consulta_model extends CI_Model{
          $this->setNombre( $this->input->post("nombre" ) );
          $this->setApellido( $this->input->post("apellido" ) );
          $this->setSexo( $this->input->post("sexo" ) );
-        $this->setEdad_max( $this->input->post("edadmax" ) );
-         $this->setEdad_min( $this->input->post("edadmin" ) );
+        $this->setEdad_max( $this->input->post("aniomax" ) );
+         $this->setEdad_min( $this->input->post("aniomin" ) );
          $this->setNacio( $this->input->post("nacio" ) );
          $this->setFechanac( $this->input->post("fechanac" ) );
           $this->setPrefix_tab("p");
@@ -186,14 +186,15 @@ private function porFechaNac(){
 private function porEdad(){
     
     if( !$this->getFechanac()){
-    $edadd= $this->getPrefix_tab().".fechanac";
+        $edadd= $this->getPrefix_tab().".fechanac";
+        
     if( $this->getEdad_min()){
        $edadmi= $this->getEdad_min();
-       array_push( $this->wheres,  "extract( year from age($edadd) ) >=  $edadmi "); 
+       array_push( $this->wheres,  "$edadd <=  '$edadmi' "); 
     } 
     if( $this->getEdad_max()){
      $edadma= $this->getEdad_max();
-      array_push( $this->wheres,  "extract( year from age($edadd) ) >=  $edadma ");   
+      array_push( $this->wheres,  "$edadd >=  '$edadma' ");   
     }
     
     }

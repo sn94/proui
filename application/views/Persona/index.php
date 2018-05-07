@@ -29,7 +29,7 @@
                            <?php  
                            
                            
-                            include("application/views/Persona/datatabla.php")
+                            include("application/views/Persona/lista_tab.php")
                           
                            
                            ?>

@@ -1,12 +1,13 @@
 <div class="panel panel-danger" id="validation-msg">
     
 </div>
+
 <?php   
 // "onsubmit"=>"procesarBusqueda(event,this)",
 $atributos= array( "class"=> "form-inline", 
                    
                     "id"=>"form-busqueda");
-$ocultos= array( "nacio"=> "226");
+$ocultos= array( "nacio"=> "226", "aniomin"=> "", "aniomax"=>"");
 
 echo form_open("Persona/buscar", $atributos , $ocultos)  ?> 
 
