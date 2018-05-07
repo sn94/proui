@@ -36,69 +36,86 @@ class Consulta_model extends CI_Model{
 
   public function __construct() {
         parent::__construct();
+        $this->recibirParametros();
     }
     
-    public function getNrodoc() {
+    
+    
+    private function recibirParametros(){
+         $this->setNrodoc( $this->input->post("nrodoc" ) );
+         $this->setNombre( $this->input->post("nombre" ) );
+         $this->setApellido( $this->input->post("apellido" ) );
+         $this->setSexo( $this->input->post("sexo" ) );
+        $this->setEdad_max( $this->input->post("edadmax" ) );
+         $this->setEdad_min( $this->input->post("edadmin" ) );
+         $this->setNacio( $this->input->post("nacio" ) );
+         $this->setFechanac( $this->input->post("fechanac" ) );
+          $this->setPrefix_tab("p");
+      }
+    
+    
+    
+    private function getNrodoc() {
         return $this->nrodoc;
     }
 
-    public function getNombre() {
+    private function getNombre() {
         return $this->nombre;
     }
 
-    public function getApellido() {
+    private function getApellido() {
         return $this->apellido;
     }
 
-    public function getEdad_min() {
+    private function getEdad_min() {
         return $this->edad_min;
     }
 
-    public function getEdad_max() {
+    private function getEdad_max() {
         return $this->edad_max;
     }
 
-    public function getNacio() {
+    private function getNacio() {
         return $this->nacio;
     }
 
-    public function getSexo() {
+    private function getSexo() {
         return $this->sexo;
     }
 
-    public function getFechanac() {
+    private function getFechanac() {
         return $this->fechanac;
     }
 
-    public function getPrefix_tab() {
+    private function getPrefix_tab() {
         return $this->prefix_tab;
     }
 
-    public function setNrodoc($nrodoc) {
+    private function setNrodoc($nrodoc) {
         $this->nrodoc = $nrodoc;
     }
 
-    public function setNombre($nombre) {
+    private function setNombre($nombre) {
         $this->nombre = mb_convert_case($nombre, MB_CASE_UPPER, "utf-8");
     }
 
-    public function setApellido($apellido) {
+    private function setApellido($apellido) {
         $this->apellido = mb_convert_case($apellido, MB_CASE_UPPER, "utf-8");
     }
 
-    public function setEdad_min($edad_min) {
+    private function setEdad_min($edad_min) {
         $this->edad_min = $edad_min;
     }
 
-    public function setEdad_max($edad_max) {
+    private function setEdad_max($edad_max) {
         $this->edad_max = $edad_max;
     }
 
-    public function setNacio($nacio) {
+    private function setNacio($nacio) {
         $this->nacio = $nacio;
     }
 
-    public function setSexo($sexo) {
+    private function setSexo($sexo) {
         if($sexo=='I')
         {$this->sexo = "";}
         else{
@@ -106,11 +123,11 @@ class Consulta_model extends CI_Model{
         }
     }
 
-    public function setFechanac($fechanac) {
+    private function setFechanac($fechanac) {
         $this->fechanac = $fechanac;
     }
 
-    public function setPrefix_tab($prefix_tab) {
+    private function setPrefix_tab($prefix_tab) {
         $this->prefix_tab = $prefix_tab;
     }
 

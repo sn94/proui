@@ -6,7 +6,7 @@
 $atributos= array( "class"=> "form-inline", 
                    
                     "id"=>"form-busqueda");
-$ocultos= array( "nacio"=> "82");
+$ocultos= array( "nacio"=> "226");
 
 echo form_open("Persona/buscar", $atributos , $ocultos)  ?> 
 

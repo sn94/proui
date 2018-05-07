@@ -10,8 +10,7 @@ class Persona extends CI_Controller{
     public function __construct() {
         parent::__construct();
          $this->load->model("Consulta_model");
-        $this->load->model("Persona_model");
-        $this->load->library("pagination");
+        $this->load->model("Persona_model"); 
         $this->load->helper("form");
     }
     
@@ -26,35 +25,35 @@ class Persona extends CI_Controller{
      
     
     
-     private function paginacion(){
-         
-         
-        $start_index = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-        $limit_per_page = 30;
-        $params['lista']= $this->Persona_model->obt_lista( $limit_per_page, $start_index);
-        
-        $total_records= sizeof($params['lista']);
-        //Calcular proximo startIndex
-        $nextStartIndex= $total_records==$limit_per_page ? $limit_per_page+1 : $total_records+1;
-        echo $nextStartIndex;
-        
-        if( $total_records > 0){
-            
-        $config['base_url'] = base_url() . 'index.php/Persona/paginar';
-        $config['total_rows'] = $total_records;
-        $config['per_page'] = $limit_per_page;
-        $config["uri_segment"] = 3;
-        
-        $this->pagination->initialize($config);
-        // construir  links de paginacion
-        $params["links"] = $this->pagination->create_links();
-        var_dump($params['links']);
-        //cargar vista
-        $this->load->view("Persona/index", $params);
-        }else{
-            echo "nada que mostrar";
-        }
-     }
+//     private function paginacion(){
+//         
+//         
+//        $start_index = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+//        $limit_per_page = 30;
+//        $params['lista']= $this->Persona_model->obt_lista( $limit_per_page, $start_index);
+//        
+//        $total_records= sizeof($params['lista']);
+//        //Calcular proximo startIndex
+//        $nextStartIndex= $total_records==$limit_per_page ? $limit_per_page+1 : $total_records+1;
+//        echo $nextStartIndex;
+//        
+//        if( $total_records > 0){
+//            
+//        $config['base_url'] = base_url() . 'index.php/Persona/paginar';
+//        $config['total_rows'] = $total_records;
+//        $config['per_page'] = $limit_per_page;
+//        $config["uri_segment"] = 3;
+//        
+//        $this->pagination->initialize($config);
+//        // construir  links de paginacion
+//        $params["links"] = $this->pagination->create_links();
+//        var_dump($params['links']);
+//        //cargar vista
+//        $this->load->view("Persona/index", $params);
+//        }else{
+//            echo "nada que mostrar";
+//        }
+//     }
      
     private function set_sql(  $arg){
         $this->parametros= $arg;
@@ -125,35 +124,38 @@ class Persona extends CI_Controller{
      }
     
      
-     
-     
-     public function buscar(){
-         
-         $this->Consulta_model->setNrodoc( $this->input->post("nrodoc" ) );
-         $this->Consulta_model->setNombre( $this->input->post("nombre" ) );
-         $this->Consulta_model->setApellido( $this->input->post("apellido" ) );
-         $this->Consulta_model->setSexo( $this->input->post("sexo" ) );
-        $this->Consulta_model->setEdad_max( $this->input->post("edadmax" ) );
-         $this->Consulta_model->setEdad_min( $this->input->post("edadmin" ) );
-         $this->Consulta_model->setNacio( $this->input->post("nacio" ) );
-         $this->Consulta_model->setFechanac( $this->input->post("fechanac" ) );
-          $this->Consulta_model->setPrefix_tab("p");
-          
-          $this->set_sql( $this->Consulta_model->build_sql() ); 
-          echo $this->get_sql();
-         //$this->paginar1();
-       $datos['lista']= $this->Persona_model->search( $this->get_sql());  
-       $this->load->view("Persona/lista_tab", $datos );
-       }
-       
+      /*******Muestra solo el formulario de busqueda y una tabla sin resultados
+        * es la vista inicial ***
+        */
        public function consultar(){
       //$datos['lista']= $this->Persona_model->search();  
        $this->load->view("Persona/index"  );
        }
     
-       
-       public function tablas(){
-         $this->load->view("Persona/index" );
-       }
     
+     /**********Recibe los parametros de busqueda y forma un string sql
+      * especifico
+      */
+     public function buscar(){
+      $this->set_sql( $this->Consulta_model->build_sql() ); 
+     echo $this->get_sql();
+         //$this->paginar1();
+       $datos['lista']= $this->Persona_model->search( $this->get_sql());  
+       $this->load->view("Persona/lista_tab", $datos );
+       }
+       
+       
+      
+     public function data_json(){
+         $this->load->model("Datatables_model");
+        echo $this->Datatables_model->obtener_json();
+                 
+     }
+       
+        public function data_tables(){
+         $this->load->view("Persona/datatabla"); 
+        }
+      
+       
+        
 }
