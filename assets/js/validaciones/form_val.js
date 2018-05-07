@@ -4,8 +4,9 @@ $(document).ready(function() {
     $("#form-busqueda").validate(
             {
         rules: { 
-            edad: { minlength: 1, maxlength: 3},
-           'fecha-nac': { date: true},
+            edadmin: { minlength: 1, maxlength: 3},
+            edadmax: { minlength: 1, maxlength: 3},
+           'fecha-nac': { date: true}
             
         },
         messages: { 

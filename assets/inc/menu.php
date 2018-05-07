@@ -42,46 +42,46 @@
                                 </li>
                                 -->
                                 <li>
-                                    <a href="javascript:void(0)" class="themed-background-dark-night themed-border-night" data-theme="css/themes/night.css" data-toggle="tooltip" title="Night"></a>
+                                    <a href="javascript:void(0)" class="themed-background-dark-night themed-border-night" data-theme="<?=base_url('assets/css/themes/night.css')?>" data-toggle="tooltip" title="Night"></a>
                                 </li>
                                 <li>
-                                    <a href="javascript:void(0)" class="themed-background-dark-amethyst themed-border-amethyst" data-theme="css/themes/amethyst.css" data-toggle="tooltip" title="Amethyst"></a>
+                                    <a href="javascript:void(0)" class="themed-background-dark-amethyst themed-border-amethyst" data-theme="<?=base_url('assets/css/themes/amethyst.css')?>" data-toggle="tooltip" title="Amethyst"></a>
                                 </li>
                                 <li>
-                                    <a href="javascript:void(0)" class="themed-background-dark-modern themed-border-modern" data-theme="css/themes/modern.css" data-toggle="tooltip" title="Modern"></a>
+                                    <a href="javascript:void(0)" class="themed-background-dark-modern themed-border-modern" data-theme="<?=base_url('assets/css/themes/modern.css')?>" data-toggle="tooltip" title="Modern"></a>
                                 </li>
                                 <li>
-                                    <a href="javascript:void(0)" class="themed-background-dark-autumn themed-border-autumn" data-theme="css/themes/autumn.css" data-toggle="tooltip" title="Autumn"></a>
+                                    <a href="javascript:void(0)" class="themed-background-dark-autumn themed-border-autumn" data-theme="<?=base_url('assets/css/themes/autumn.css')?>" data-toggle="tooltip" title="Autumn"></a>
                                 </li>
                                 <li>
-                                    <a href="javascript:void(0)" class="themed-background-dark-flatie themed-border-flatie" data-theme="css/themes/flatie.css" data-toggle="tooltip" title="Flatie"></a>
+                                    <a href="javascript:void(0)" class="themed-background-dark-flatie themed-border-flatie" data-theme="<?=base_url('assets/css/themes/flatie.css')?>" data-toggle="tooltip" title="Flatie"></a>
                                 </li>
                                 <li>
-                                    <a href="javascript:void(0)" class="themed-background-dark-spring themed-border-spring" data-theme="css/themes/spring.css" data-toggle="tooltip" title="Spring"></a>
+                                    <a href="javascript:void(0)" class="themed-background-dark-spring themed-border-spring" data-theme="<?=base_url('assets/css/themes/spring.css')?>" data-toggle="tooltip" title="Spring"></a>
                                 </li>
                                 <li>
-                                    <a href="javascript:void(0)" class="themed-background-dark-fancy themed-border-fancy" data-theme="css/themes/fancy.css" data-toggle="tooltip" title="Fancy"></a>
+                                    <a href="javascript:void(0)" class="themed-background-dark-fancy themed-border-fancy" data-theme="<?=base_url('assets/css/themes/fancy.css')?>" data-toggle="tooltip" title="Fancy"></a>
                                 </li>
                                 <li>
-                                    <a href="javascript:void(0)" class="themed-background-dark-fire themed-border-fire" data-theme="css/themes/fire.css" data-toggle="tooltip" title="Fire"></a>
+                                    <a href="javascript:void(0)" class="themed-background-dark-fire themed-border-fire" data-theme="<?=base_url('assets/css/themes/fire.css')?>" data-toggle="tooltip" title="Fire"></a>
                                 </li>
                                 <li>
-                                    <a href="javascript:void(0)" class="themed-background-dark-coral themed-border-coral" data-theme="css/themes/coral.css" data-toggle="tooltip" title="Coral"></a>
+                                    <a href="javascript:void(0)" class="themed-background-dark-coral themed-border-coral" data-theme="<?=base_url('assets/css/themes/coral.css')?>" data-toggle="tooltip" title="Coral"></a>
                                 </li>
                                 <li>
-                                    <a href="javascript:void(0)" class="themed-background-dark-lake themed-border-lake" data-theme="css/themes/lake.css" data-toggle="tooltip" title="Lake"></a>
+                                    <a href="javascript:void(0)" class="themed-background-dark-lake themed-border-lake" data-theme="<?=base_url('assets/css/themes/lake.css')?>" data-toggle="tooltip" title="Lake"></a>
                                 </li>
                                 <li>
-                                    <a href="javascript:void(0)" class="themed-background-dark-forest themed-border-forest" data-theme="css/themes/forest.css" data-toggle="tooltip" title="Forest"></a>
+                                    <a href="javascript:void(0)" class="themed-background-dark-forest themed-border-forest" data-theme="<?=base_url('assets/css/themes/forest.css')?>" data-toggle="tooltip" title="Forest"></a>
                                 </li>
                                 <li>
-                                    <a href="javascript:void(0)" class="themed-background-dark-waterlily themed-border-waterlily" data-theme="css/themes/waterlily.css" data-toggle="tooltip" title="Waterlily"></a>
+                                    <a href="javascript:void(0)" class="themed-background-dark-waterlily themed-border-waterlily" data-theme="<?=base_url('assets/css/themes/waterlily.css')?>" data-toggle="tooltip" title="Waterlily"></a>
                                 </li>
                                 <li>
-                                    <a href="javascript:void(0)" class="themed-background-dark-emerald themed-border-emerald" data-theme="css/themes/emerald.css" data-toggle="tooltip" title="Emerald"></a>
+                                    <a href="javascript:void(0)" class="themed-background-dark-emerald themed-border-emerald" data-theme="<?=base_url('assets/css/themes/emerald.css')?>" data-toggle="tooltip" title="Emerald"></a>
                                 </li>
                                 <li>
-                                    <a href="javascript:void(0)" class="themed-background-dark-blackberry themed-border-blackberry" data-theme="css/themes/blackberry.css" data-toggle="tooltip" title="Blackberry"></a>
+                                    <a href="javascript:void(0)" class="themed-background-dark-blackberry themed-border-blackberry" data-theme="<?=base_url('assets/css/themes/blackberry.css')?>" data-toggle="tooltip" title="Blackberry"></a>
                                 </li>
                             </ul>
                             <!-- END Theme Colors -->
