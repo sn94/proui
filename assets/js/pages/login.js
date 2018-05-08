@@ -73,6 +73,7 @@ var Login = function() {
                 success: function(e) {
                     e.closest('.form-group').removeClass('has-success has-error');
                     e.closest('.help-block').remove();
+                     
                 },
                 rules: {
                     'login-email': {
@@ -85,10 +86,10 @@ var Login = function() {
                     }
                 },
                 messages: {
-                    'login-email': 'Please enter your account\'s email',
+                    'login-email': 'Por favor ingrese su nombre de usuario',
                     'login-password': {
-                        required: 'Please provide your password',
-                        minlength: 'Your password must be at least 5 characters long'
+                        required: 'Por favor provea su password',
+                        minlength: 'Su password debe ser de al menos 5 caracteres de longitud'
                     }
                 }
             });

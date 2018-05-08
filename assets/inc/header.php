@@ -1,4 +1,7 @@
  <header class="navbar navbar-default">
+     
+        
+           
                         <!-- Left Header Navigation -->
                         <ul class="nav navbar-nav-custom">
                             <!-- Main Sidebar Toggle Button -->

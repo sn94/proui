@@ -1,6 +1,10 @@
  <!-- Dashboard Header -->
                         <!-- For an image header add the class 'content-header-media' and an image as in the following example -->
                         <div class="content-header content-header-media">
+        
+        
+        
+        
                             <div class="header-section">
                                 <div class="row">
                                     <!-- Main Title (hidden on small devices for the statistics to fit) -->

@@ -32,32 +32,34 @@ error_reporting(0);
     <head>
         <meta charset="utf-8">
 
-        <title>ProUI - Responsive Bootstrap Admin Template</title>
+        <title>Sistema de Informaci&oacute;n Policial</title>
 
         <meta name="description" content="ProUI is a Responsive Bootstrap Admin Template created by pixelcave and published on Themeforest.">
         <meta name="author" content="pixelcave">
         <meta name="robots" content="noindex, nofollow">
         <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=0">
 
+
         <!-- Icons -->
         <!-- The following icons can be replaced with your own, they are used by desktop and mobile browsers -->
-        <link rel="shortcut icon" href="img/favicon.png">
-        <link rel="apple-touch-icon" href="img/icon57.png" sizes="57x57">
-        <link rel="apple-touch-icon" href="img/icon72.png" sizes="72x72">
-        <link rel="apple-touch-icon" href="img/icon76.png" sizes="76x76">
-        <link rel="apple-touch-icon" href="img/icon114.png" sizes="114x114">
-        <link rel="apple-touch-icon" href="img/icon120.png" sizes="120x120">
-        <link rel="apple-touch-icon" href="img/icon144.png" sizes="144x144">
-        <link rel="apple-touch-icon" href="img/icon152.png" sizes="152x152">
-        <link rel="apple-touch-icon" href="img/icon180.png" sizes="180x180">
+        <link rel="shortcut icon" href="<?= base_url("assets")?>/img/cachito.png">
+        <link rel="apple-touch-icon" href="<?= base_url("assets")?>/img/icon57.png" sizes="57x57">
+        <link rel="apple-touch-icon" href="<?= base_url("assets")?>/img/icon72.png" sizes="72x72">
+        <link rel="apple-touch-icon" href="<?= base_url("assets")?>/img/icon76.png" sizes="76x76">
+        <link rel="apple-touch-icon" href="<?= base_url("assets")?>/img/icon114.png" sizes="114x114">
+        <link rel="apple-touch-icon" href="<?= base_url("assets")?>/img/icon120.png" sizes="120x120">
+        <link rel="apple-touch-icon" href="<?= base_url("assets")?>/img/icon144.png" sizes="144x144">
+        <link rel="apple-touch-icon" href="<?= base_url("assets")?>/img/icon152.png" sizes="152x152">
+        <link rel="apple-touch-icon" href="<?= base_url("assets")?>/img/icon180.png" sizes="180x180">
         <!-- END Icons -->
+
 
         <!-- Stylesheets -->
         <!-- Bootstrap is included in its original form, unaltered-->
     
-   <link rel="stylesheet" href="<?= base_url("assets")?>/css/bootstrap.min.css">
-   <link rel="stylesheet" href="<?= base_url("assets")?>/css/jquery-ui.min.css"> 
-  
+        <link rel="stylesheet" href="<?= base_url("assets")?>/css/bootstrap.min.css">
+        <link rel="stylesheet" href="<?= base_url("assets")?>/css/jquery-ui.min.css"> 
+
   
         <!-- Related styles of various icon packs and plugins -->
         <link rel="stylesheet" href="<?= base_url("assets")?>/css/plugins.css">
@@ -71,7 +73,7 @@ error_reporting(0);
         <link rel="stylesheet" href="<?= base_url("assets")?>/css/themes.css">
         <!-- END Stylesheets -->
 
-        <!-- Modernizr (browser feature detection library) -->
+         <!-- Modernizr (browser feature detection library) -->
        
        <script src="<?= base_url("assets")?>/js/vendor/modernizr.min.js"></script>
         
@@ -85,68 +87,12 @@ error_reporting(0);
 
             'page-loading'      enables page preloader
         -->
-        <div id="page-wrapper">
-           
-            <div id="page-container" class="sidebar-partial sidebar-visible-lg sidebar-no-animations">
-                <!-- Alternative Sidebar -->
-                 <!-- END Alternative Sidebar -->
-
-                <?php
-                 include("assets/inc/menu.php");
-                ?>
-
-                <!-- Main Container -->
-                <div id="main-container">
-                   
-                    <!-- END Header -->
-                    <?php 
-                    include("assets/inc/header.php");
-                    ?>
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    <!-- Page content --> 
-                    <div id="page-content">
-                    
-                    </div>
-                    <!-- END Page Content -->
-
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    <!-- Footer -->
-                    <footer class="clearfix">
-                        <div class="pull-right">
-                            Crafted with <i class="fa fa-heart text-danger"></i> by <a href="http://goo.gl/vNS3I" target="_blank">pixelcave</a>
-                        </div>
-                        <div class="pull-left">
-                            <span id="year-copy"></span> &copy; <a href="http://goo.gl/TDOSuC" target="_blank">ProUI 3.8</a>
-                        </div>
-                    </footer>
-                    <!-- END Footer -->
-                </div>
-                <!-- END Main Container -->
-            </div>
-            <!-- END Page Container -->
-        </div>
-        <!-- END Page Wrapper -->
-
-        <!-- Scroll to top link, initialized in js/app.js - scrollToTop() -->
-        <a href="#" id="to-top"><i class="fa fa-angle-double-up"></i></a>
-
-        <!-- User Settings, modal which opens from Settings link (found in top right user menu) and the Cog link (found in sidebar user info) -->
-        <div id="modal-user-settings" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+        
+        
+        
+        <div class="container">
+            <!-- User Settings, modal which opens from Settings link (found in top right user menu) and the Cog link (found in sidebar user info) -->
+        <div id="modal-user-settings" class="modal" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <!-- Modal Header -->
@@ -157,7 +103,7 @@ error_reporting(0);
 
                     <!-- Modal Body -->
                     <div class="modal-body">
-                        <form action="indexhtm.html" method="post" enctype="multipart/form-data" class="form-horizontal form-bordered" onSubmit="return false;">
+                        <form action="index.html" method="post" enctype="multipart/form-data" class="form-horizontal form-bordered" onSubmit="return false;">
                             <fieldset>
                                 <legend>Vital Info</legend>
                                 <div class="form-group">
@@ -210,22 +156,89 @@ error_reporting(0);
             </div>
         </div>
         <!-- END User Settings -->
+        </div>
+        
+        
+        <div id="page-wrapper">
+           
+            <div id="page-container" class="sidebar-partial sidebar-visible-lg sidebar-no-animations">
+                <!-- Alternative Sidebar -->
+                 <!-- END Alternative Sidebar -->
 
-        <!-- jQuery, Bootstrap.js, jQuery plugins and Custom JS code -->
+     
         
-        <script src="<?= base_url("assets/js/vendor/jquery.min.js")?>"></script>
-        <script src="<?= base_url("assets/js/vendor")?>/bootstrap.min.js?v=2"></script>
+        
+                <?php
+                 include("assets/inc/menu.php");
+                ?>
+
+                <!-- Main Container -->
+                <div id="main-container">
+                   
+                     
+                    <!-- END Header -->
+                    <?php 
+                    include("assets/inc/header.php");
+                    ?>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <!-- Page content --> 
+                    <div id="page-content">
+                    <!--Aqui se sirve el contenido  --->
+                    
+                    </div>
+                    <!-- END Page Content -->
+
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <!-- Footer -->
+                    <footer class="clearfix">
+                        <div class="pull-right">
+                            Crafted with <i class="fa fa-heart text-danger"></i> by <a href="http://goo.gl/vNS3I" target="_blank">pixelcave</a>
+                        </div>
+                        <div class="pull-left">
+                            <span id="year-copy"></span> &copy; <a href="http://goo.gl/TDOSuC" target="_blank">ProUI 3.8</a>
+                        </div>
+                    </footer>
+                    <!-- END Footer -->
+                </div>
+                <!-- END Main Container -->
+            </div>
+            <!-- END Page Container -->
+        </div>
+        <!-- END Page Wrapper -->
+
+        <!-- Scroll to top link, initialized in js/app.js - scrollToTop() -->
+        <a href="#" id="to-top"><i class="fa fa-angle-double-up"></i></a>
+  
+ </body>
+  <!-- jQuery, Bootstrap.js, jQuery plugins and Custom JS code -->
+        
+       <script src="<?= base_url("assets/js/vendor/jquery.min.js")?>"></script> 
+       <script src="<?= base_url("assets/js/vendor")?>/bootstrap.min.js?v=2"></script>
        <script src="<?= base_url("assets")?>/js/plugins.js"></script>
-        <script src="<?= base_url("assets")?>/js/app.js"></script> 
+       <script src="<?= base_url("assets")?>/js/app.js"></script> 
         
-        <script src="<?= base_url("assets/js/vendor/jquery.validate.min.js")?>"></script>
+       <script src="<?= base_url("assets/js/vendor/jquery.validate.min.js")?>"></script>
        <script src="<?= base_url("assets/js/vendor/jquery-ui.min.js")?>"> </script>
-        
-      
+         
         <script src="<?= base_url("assets")?>/js/pages/tablesDatatables.js"></script>
         <script> $(function(){ TablesDatatables.init(); }); </script>
-
-
+ 
+        
         <script>
             
             /**********GLOBALES *****************/
@@ -433,21 +446,9 @@ error_reporting(0);
         /***Se ejecuta despues de cargar completamente el documento ***/
         $(document).ready( function(){
               pedirVista( "<?= base_url("index.php/welcome/central")?>" );
-              cargarNacionalidades();
-              
+              cargarNacionalidades();   
         });
-           
-           
-           
-           
-           
-           
-           
-           
-           
-           
-           
-           
         </script>
-    </body>
+        
+        
 </html>

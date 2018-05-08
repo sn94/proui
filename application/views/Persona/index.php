@@ -1,5 +1,6 @@
     <!-- Datatables Header -->
-                        <div class="content-header">
+         <div class="content-header">
+                              
                             <div class="header-section">
                                 <h1>
                                     <i class="fa fa-table"></i>Personas<br><small>Búsqueda de registros</small>
