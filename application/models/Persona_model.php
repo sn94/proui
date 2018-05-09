@@ -117,8 +117,12 @@ class Persona_model extends CI_Model{
           $sql= "$params ";  
       }
        
-  $quer= $this->db->query( $sql);   
-   $res= $quer->result();//  Retorna una lista o arreglo de objetos
+  $quer= $this->db->query( $sql);  
+  $res= array();
+  while ($row = $quer->unbuffered_row())
+    {   array_push($res, $row);}
+
+   //$res= $quer->result();//  Retorna una lista o arreglo de objetos
    //$jsondata= json_encode($res);
    return $res;  
   }

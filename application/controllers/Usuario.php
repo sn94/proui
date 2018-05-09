@@ -16,34 +16,44 @@ class Usuario extends CI_Controller {
     
     public function __construct() {
         parent::__construct();
+        $this->load->model("Usuario_model");
     }
     
     
+    /**
+     * formulario para inicio de sesion
+     */
     public function index(){
         
         $this->load->view("Usuario/index");
     }
     
     
-    public function login(){
-        
-        //recibir usuario y clave
-        
-        //obtener dato de clave de usuario
+    /***
+     * proceso de autenticacion
+     */
+    public function login(){ 
         
         //comparar
+        //$this->Usuario_model->claveCorrecta();
         
-        //opcion correcta
-        if($this->input->post("login-email") == "sonia@gmail.com"){
-            echo "Logueado";
+        if(true){  //opcion correcta
+            
+            //crear la sesion
+            
+            //menu principal
+            $this->load->view("index"); 
+        }else{
+            //clave invalida 
+            $this->load->view("Usuario/index"); 
         }
-        //clave invalida
-        else{
-            $this->load->view("Usuario/index");
         }
+    /**
+     * end autenticacion
+     */
         
-    }
-    
+        
+        
     
     
     
