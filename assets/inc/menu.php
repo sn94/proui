@@ -21,7 +21,7 @@
                             <div class="sidebar-section sidebar-user clearfix sidebar-nav-mini-hide">
                                 <div class="sidebar-user-avatar">
                                   <a href="ima_perfil.php" target="_blank">
-                                   <img alt="<?=$usua?>" class="img" src="<?= base_url("assets")?>/img/cachito.png" width="70" />
+                                      <img alt="<?= isset($usua)? $usua:"nada"?>" class="img" src="<?= base_url("assets")?>/img/cachito.png" width="70" />
                                   </a> 
                                  <!--   <a href="page_ready_user_profile.html">
                                            <img src="<?= base_url("assets")?>/img/placeholders/avatars/avatar2.jpg" alt="avatar">

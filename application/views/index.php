@@ -1,7 +1,4 @@
-<?php
-session_start();
-error_reporting(0);
-
+<?php 
  $sql ="select nrodoc,nombre,apellido,fechanac,lugnac "
          . "from personas where nombre ilike 'VICTOR%' and apellido ilike 'ROMERO%'";
  
@@ -445,8 +442,8 @@ error_reporting(0);
     
         /***Se ejecuta despues de cargar completamente el documento ***/
         $(document).ready( function(){
-              pedirVista( "<?= base_url("index.php/welcome/central")?>" );
-              cargarNacionalidades();   
+            pedirVista( "<?= base_url("index.php/welcome/central")?>" );
+             cargarNacionalidades();   
         });
         </script>
         

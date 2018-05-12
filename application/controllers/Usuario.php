@@ -15,17 +15,31 @@ class Usuario extends CI_Controller {
     
     
     public function __construct() {
-        parent::__construct();
-        $this->load->model("Usuario_model");
+        parent::__construct(); 
+        $this->load->model("Usuario_model"); 
     }
     
     
     /**
      * formulario para inicio de sesion
      */
+     
+    
+    
+    
     public function index(){
+        $key = bin2hex($this->encryption->create_key(16)); 
+        $config['encryption_key']= hex2bin( $key);
         
-        $this->load->view("Usuario/index");
+        
+        //verificar si existe una sesion
+        //if($this->session->has_userdata("poli_user")){//ir a menu
+            //menu principal
+           // $this->load->view("index"); 
+        //}else{//mostrar form de login
+            $this->load->view("Usuario/index");
+        //}
+        
     }
     
     
@@ -36,17 +50,23 @@ class Usuario extends CI_Controller {
         
         //comparar
         //$this->Usuario_model->claveCorrecta();
+        //
+        //obtener credenciales 
+        $user= $this->input->post("login-email");
+        $pass= $this->input->post("login-password");
         
-        if(true){  //opcion correcta
-            
-            //crear la sesion
-            
-            //menu principal
-            $this->load->view("index"); 
-        }else{
-            //clave invalida 
-            $this->load->view("Usuario/index"); 
+        //obtener tipo pregunta
+        //obtener respuesta  a pregunta
+        if( $user && $pass){
+           $this->my_session->set_userdata("poli_user",$user);
+           $this->my_session->set_userdata("poli_pass",$pass); 
+           echo  "Usuario " . $this->my_session->userdata("poli_user");
+           //$this->load->view("index");
+        }else{ 
+             // echo  "Usuario " .$user." ".$pass;
+           $this->load->view("Usuario/index"); 
         }
+          
         }
     /**
      * end autenticacion
