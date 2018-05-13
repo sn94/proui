@@ -60,8 +60,8 @@ class Usuario extends CI_Controller {
         if( $user && $pass){
            $this->my_session->set_userdata("poli_user",$user);
            $this->my_session->set_userdata("poli_pass",$pass); 
-           echo  "Usuario " . $this->my_session->userdata("poli_user");
-           //$this->load->view("index");
+          // echo  "Usuario " . $this->my_session->userdata("poli_user");
+          $this->load->view("index");
         }else{ 
              // echo  "Usuario " .$user." ".$pass;
            $this->load->view("Usuario/index"); 
@@ -74,7 +74,16 @@ class Usuario extends CI_Controller {
         
         
         
+        
+        
+        
+        public function log_out(){
+            $this->my_session->sess_destroy();
+            redirect(base_url("index.php/Usuario"));
+        }
     
+        
+        
     
     
 }

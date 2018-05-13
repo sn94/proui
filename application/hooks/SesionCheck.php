@@ -33,7 +33,17 @@ class SesionCheck {
             if( ($this->ci_instance->uri->segment(1) !=  "Usuario" && 
                $this->ci_instance->uri->segment(2) !=  "login")    ){
                redirect( base_url('index.php/Usuario/login'));
-            }   } 
+            }   
+            
+         } else {
+             if( $this->ci_instance->uri->segment(1) ==  "Usuario" && 
+              (  $this->ci_instance->uri->segment(2) ==  "login" ||
+                  $this->ci_instance->uri->segment(2) ==  "index" || 
+                  $this->ci_instance->uri->segment(2) ==  FALSE )     ){
+               redirect( base_url('index.php/Welcome'));
+            }
+             
+         }
            }
     
     

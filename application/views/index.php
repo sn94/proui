@@ -259,6 +259,13 @@
            }
            
            
+           function ErrorMessage(){
+               
+             var msg="<div class='alert alert-danger'>Proporcione mas parametros por favor</div>";  
+             return msg;   }
+         
+         
+           
             function cargarNacionalidades(){
         var url=  "<?= base_url("index.php/referencia/nacionalidad")?>";
         
@@ -290,18 +297,21 @@
                            },
                            success: function(  data ){ 
                                $( contenedor).html( data );
-                                                }//end success
+                           }//end success
                                                 ,
                            error: function(xhr, textStatus, errorThrown){
+                           $( contenedor).html( ErrorMessage() );
                            console.log( textStatus," ", errorThrown);
-    
-                                }
+                            }
                        });//end call to ajax
     
             }
             
             
-            function pedirContenido(arg){
+            
+            
+            
+           function pedirContenido(arg, metodo="get", datos=null){
             var contenido="";
             $.ajax(
                        {
