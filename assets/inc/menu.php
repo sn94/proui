@@ -118,13 +118,13 @@
                                 </li>
                                 <li class="sidebar-header">
                                     <span class="sidebar-header-options clearfix"><a href="javascript:void(0)" data-toggle="tooltip" title="Quick Settings"><i class="gi gi-settings"></i></a></span>
-                                    <span class="sidebar-header-title">Design Kit</span>
+                                    <span class="sidebar-header-title">M&oacute;dulos</span>
                                 </li>
                                 <li>
                                     <a href="#" class="sidebar-nav-menu"><i class="fa fa-angle-left sidebar-nav-indicator sidebar-nav-mini-hide"></i><i class="fa fa-cube sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">Sistemas</span></a>
                                     <ul>
                                         <li>
-                                            <a href="page_ui_grid_blocks.html">Grid &amp; Blocks</a>
+                                            <a href="page_ui_grid_blocks.html">Certificados</a>
                                         </li>
                                         <li>
                                             <a href="page_ui_draggable_blocks.html">Draggable Blocks</a>

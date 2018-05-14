@@ -25,7 +25,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 //$config['base_url'] = 'http://172.16.0.98/proui';
- $config['base_url'] = 'http://localhost/proui';
+$config['base_url'] = 'http://localhost/proui';
 //$config['base_url'] = 'http://192.168.0.10/proui';
 
 /*
@@ -327,7 +327,7 @@ $config['cache_query_string'] = FALSE;
 | https://codeigniter.com/user_guide/libraries/encryption.html
 |
 */
-$config['encryption_key'] = hex2bin( '0e41233be7bb424441c7f69766653113');
+$config['encryption_key'] = '';
 
 /*
 |--------------------------------------------------------------------------

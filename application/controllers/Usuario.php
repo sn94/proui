@@ -27,25 +27,29 @@ class Usuario extends CI_Controller {
     
     
     
-    public function index(){
-        $key = bin2hex($this->encryption->create_key(16)); 
-        $config['encryption_key']= hex2bin( $key);
+    public function index(){ 
         
-        
-        //verificar si existe una sesion
-        //if($this->session->has_userdata("poli_user")){//ir a menu
-            //menu principal
-           // $this->load->view("index"); 
-        //}else{//mostrar form de login
-            $this->load->view("Usuario/index");
-        //}
-        
+        $this->load->view("Usuario/index"); 
     }
     
     
     /***
      * proceso de autenticacion
      */
+    
+    private function encriptar_pass($ar){
+        // Switch back to the OpenSSL driver
+        $this->encryption->initialize(
+                array('driver' => 'openssl',
+                       'key' => '<a 16-character random string>'
+                    ));
+        
+      
+      $encri= $this->encryption->encrypt( $ar);echo " ".$encri;
+      return $encri;
+    }
+    
+    
     public function login(){ 
         
         //comparar
@@ -60,8 +64,10 @@ class Usuario extends CI_Controller {
         if( $user && $pass){
            $this->my_session->set_userdata("poli_user",$user);
            $this->my_session->set_userdata("poli_pass",$pass); 
-          // echo  "Usuario " . $this->my_session->userdata("poli_user");
-          $this->load->view("index");
+            
+         $this->encriptar_pass( $pass ); 
+         $this->load->view("index");
+         
         }else{ 
              // echo  "Usuario " .$user." ".$pass;
            $this->load->view("Usuario/index"); 
