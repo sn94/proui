@@ -8,7 +8,12 @@
      <?php 
      if( isset($lista)):
      foreach ($lista as $ele):?>
-        <tr><td><?=  $ele->nrodoc?></td><td><?=  $ele->nombre?></td><td><?=  $ele->situacion?></td></tr>
+     
+        <tr>
+            <td><a onclick="persona.show( event)" href="#"><?=  $ele->nrodoc?></a></td>
+            <td><?=  $ele->nombre." ".$ele->apellido?></td>
+            <td><?=  $ele->situacion?></td></tr>
+        
         
       <?php endforeach;endif; ?> 
  </tbody>

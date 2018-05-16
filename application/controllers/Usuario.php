@@ -43,10 +43,9 @@ class Usuario extends CI_Controller {
                 array('driver' => 'openssl',
                        'key' => '<a 16-character random string>'
                     ));
-        
-      
-      $encri= $this->encryption->encrypt( $ar);echo " ".$encri;
-      return $encri;
+      $encri= $this->encryption->encrypt( $ar); //encriptado de la libreria
+      $sha1_str= sha1($ar);
+      $md5_str=  md5($ar)."<br>";
     }
     
     
@@ -66,13 +65,11 @@ class Usuario extends CI_Controller {
            $this->my_session->set_userdata("poli_pass",$pass); 
             
          $this->encriptar_pass( $pass ); 
-         $this->load->view("index");
+         redirect(base_url("index.php/Welcome")) ; 
          
-        }else{ 
-             // echo  "Usuario " .$user." ".$pass;
+        }else{  
            $this->load->view("Usuario/index"); 
-        }
-          
+        } 
         }
     /**
      * end autenticacion

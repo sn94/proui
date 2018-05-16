@@ -6,7 +6,7 @@
                                     <i class="fa fa-table"></i>Personas<br><small>Búsqueda de registros</small>
                                 </h1>
                                 
-                                <?php include("application/views/Persona/form_busqueda.php"); ?>
+                                <?php include("application/views/Persona/buscar.php"); ?>
                                 
                                 
                             </div>

@@ -104,7 +104,19 @@ class Persona_model extends CI_Model{
     
     
     
-     public function search( $params= ""){
+  public function byCi(  $arg){
+      $sql="select p.nrodoc,concat(p.nombre,concat(' ',p.apellido)) as nombre,"
+           . "  c.est_jud  as situacion "
+           . "from {$this->tabla} p join cap001 c "
+   . "on c.cidcap=p.nrodoc where p.nrodoc='$arg' ";
+       $quer= $this->db->query( $sql);  
+  $res= $quer->row();   return $res; 
+  }
+  
+  
+  
+  
+  public function search( $params= ""){
   $sql=""; 
  
       if( !$params){
