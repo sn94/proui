@@ -1,7 +1,7 @@
 
 <table id="table-id" class="table table-vcenter table-condensed table-bordered">
     <thead>
-        <tr><th>Nrodoc</th><th>Nombre</th><th>Situacion</th></tr>
+        <tr>  <th>Foto</th> <th>Nrodoc</th><th>Nombre</th><th>Situacion</th></tr>
  </thead>
  <tbody>
      
@@ -10,7 +10,9 @@
      foreach ($lista as $ele):?>
      
         <tr>
-            <td><a onclick="persona.show( event)" href="#"><?=  $ele->nrodoc?></a></td>
+            <td><img src="<?= base_url("assets/img/sin-foto.jpg")?>" / width="100" height="100"></td>
+            
+            <td><a onclick="view_person( event, this)" href="#"><?=  $ele->nrodoc?></a></td>
             <td><?=  $ele->nombre." ".$ele->apellido?></td>
             <td><?=  $ele->situacion?></td></tr>
         
@@ -19,7 +21,7 @@
  </tbody>
  
    <tfoot>
-        <tr> <th>Nrodoc</th><th>Nombre</th><th>Situacion</th></tr>
+        <tr>  <th>Foto</th>  <th>Nrodoc</th><th>Nombre</th><th>Situacion</th></tr>
  </tfoot>
 </table>
 

@@ -1,6 +1,4 @@
-<div class="panel panel-danger" id="validation-msg">
-    
-</div>
+ 
 
 <?php   
 // "onsubmit"=>"procesarBusqueda(event,this)",

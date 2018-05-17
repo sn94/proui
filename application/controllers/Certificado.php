@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Welcome extends CI_Controller {
+class Certificado extends CI_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -22,20 +22,17 @@ class Welcome extends CI_Controller {
         public function __construct() {
             parent::__construct(); 
         }
-	public function index()
-	{
-            $this->load->view('index'); 
-	}
-        
- 
-     public function central(){
-        $this->load->view("central");
-     }
-
-
-    public function header_default(){
-         $this->load->view("templates/header"); 
+	 
+         
+    
+    
+    public function header_certi(){
+        $this->load->view("Certificados/header_menu_h"); 
     }
-     
+      
+       public function body_certi(){ 
+        $this->load->view("Certificados/body_certi");
+    }  
+        
         
 }

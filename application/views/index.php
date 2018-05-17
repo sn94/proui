@@ -171,7 +171,7 @@
         <p>Some text in the modal.</p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
       </div>
     </div>
 
@@ -195,18 +195,18 @@
                  include("assets/inc/menu.php");
                 ?>
 
+                 
                 <!-- Main Container -->
                 <div id="main-container">
                    
-                     
+                    
+                    <div id="page-header" class="m-0 p-0">
+                       
                     <!-- END Header -->
                     <?php 
                     include("assets/inc/header.php");
                     ?>
-                    
-                    
-                    
-                    
+                 </div>
                     
                     
                     
@@ -263,26 +263,10 @@
  
         
         <script>
-    
-    var URL_BASE="<?= base_url()?>";
+    /****CONSTANTE, BASE DE LA URL *****/
+    const URL_BASE="<?= base_url()?>";
      
-    
-    class Persona{ 
-        constructor(){
-                    }
-        show(ev){
-            ev.preventDefault();
-            $("#myModal .modal-title ").text("tituloss");
-            $("#myModal .modal-title ").body("tituloss");
-            $("#myModal").modal("show");
-           /* $.ajax({
-                url: "localhost/proui/index.php/Persona/"+URL_BASE,
-                success:function( data ){   }
-                });*/ 
-  }
-}
-var persona=  new Persona();
-           
+         
             
             /**********GLOBALES *****************/
            //objeto para datepicker
@@ -329,6 +313,8 @@ var persona=  new Persona();
         
         
         /************Formularios y peticiones***************/
+      
+        
         
             /** Actualiza por defecto solo el div page-content ***/
            function pedirVista(arg, contenedor="#page-content",metodo="get",datos={}){
@@ -353,10 +339,7 @@ var persona=  new Persona();
     
             }
             
-            
-            
-            
-            
+             
            function pedirContenido(arg, metodo="get", datos=null){
             var contenido="";
             $.ajax(
@@ -495,6 +478,33 @@ var persona=  new Persona();
          
 
     
+       function index_consultas(){
+             pedirVista(URL_BASE+"/index.php/Welcome/header_default", "#page-header");
+            pedirVista(URL_BASE+"/index.php/Persona", "#page-content");
+        }
+        
+          function index_certificados(){
+             pedirVista(URL_BASE+"index.php/Certificado/header_certi", "#page-header");
+            pedirVista(URL_BASE+"index.php/Certificado/body_certi", "#page-content");
+        }
+        
+        
+       function    view_person(ev, contexto){
+            ev.preventDefault();
+            var nroci= $( contexto ).text();
+             $("#myModal").modal("show");
+            $.ajax({
+                url: URL_BASE+"index.php/Persona/view/"+nroci,
+                beforeSend: 
+                        function(){  
+                            $("#myModal .modal-body ").html( ImageLoader() );
+                           },
+                success:function( data ){ 
+                        $("#myModal .modal-title ").text("Datos personales");
+                        $("#myModal .modal-body ").html( data ); 
+                                         }
+                });
+            }
     
         /***Se ejecuta despues de cargar completamente el documento ***/
         $(document).ready( function(){

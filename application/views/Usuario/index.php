@@ -166,7 +166,7 @@
         
 
         <!-- Load and execute javascript code used only in this page -->
-        <script src="<?= base_url("assets/js/pages/login.js?v=6") ?>" ></script>
+        <script src="<?= base_url("assets/js/pages/login.js?v=1") ?>" ></script>
         <script>$(function(){ Login.init(); });</script>
     </body>
 </html>

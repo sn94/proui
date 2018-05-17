@@ -16,7 +16,6 @@
                                 <i class="gi gi-flash"></i><span class="sidebar-nav-mini-hide"><strong>Polic&iacute;a</strong>Nacional</span>
                             </a>
                             <!-- END Brand -->
-
                             <!-- User Info -->
                             <div class="sidebar-section sidebar-user clearfix sidebar-nav-mini-hide">
                                 <div class="sidebar-user-avatar">
@@ -28,7 +27,7 @@
                                     </a>
                                   -->  
                                 </div>
-                                <div class="sidebar-user-name">Juan Silvestre</div>
+                                <div class="sidebar-user-name"><?= $this->my_session->userdata("poli_user")?></div>
                                 <div class="sidebar-user-links">
                                     <a href="page_ready_user_profile.html" data-toggle="tooltip" data-placement="bottom" title="Profile"><i class="gi gi-user"></i></a>
                                     <a href="page_ready_inbox.html" data-toggle="tooltip" data-placement="bottom" title="Messages"><i class="gi gi-envelope"></i></a>
@@ -98,7 +97,7 @@
                                     <a onclick="pedirVista( '<?= base_url("index.php/welcome/central")?>');"  href="#" class=" active"><i class="gi gi-home sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">Inicio</span></a>
                                 </li>
                                  <li>
-                                    <a onclick="pedirVista( '<?= base_url("index.php/Persona/consultar")?>');" href="#"><i class="gi gi-eye_open sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">Consultas</span></a>
+                                    <a onclick="index_consultas()" href="#"><i class="gi gi-eye_open sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">Consultas</span></a>
                                 </li>
                                 <li class="sidebar-header">
                                     <span class="sidebar-header-options clearfix"><a href="javascript:void(0)" data-toggle="tooltip" title="Quick Settings"><i class="gi gi-settings"></i></a><a href="javascript:void(0)" data-toggle="tooltip" title="Create the most amazing pages with the widget kit!"><i class="gi gi-lightbulb"></i></a></span>
@@ -124,7 +123,7 @@
                                     <a href="#" class="sidebar-nav-menu"><i class="fa fa-angle-left sidebar-nav-indicator sidebar-nav-mini-hide"></i><i class="fa fa-cube sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">Sistemas</span></a>
                                     <ul>
                                         <li>
-                                            <a href="page_ui_grid_blocks.html">Certificados</a>
+                                            <a href="#" onclick="index_certificados()">Certificados</a>
                                         </li>
                                         <li>
                                             <a href="page_ui_draggable_blocks.html">Draggable Blocks</a>

@@ -105,10 +105,27 @@ class Persona_model extends CI_Model{
     
     
   public function byCi(  $arg){
-      $sql="select p.nrodoc,concat(p.nombre,concat(' ',p.apellido)) as nombre,"
-           . "  c.est_jud  as situacion "
-           . "from {$this->tabla} p join cap001 c "
-   . "on c.cidcap=p.nrodoc where p.nrodoc='$arg' ";
+      $sql="select p.nrodoc,concat(p.nombre,concat(' ',p.apellido)) as nombre,p.fechanac,"
+           . "p.lugnac, n.descrip as nacio, n1.descrip as nacioori,pr.descripcion as profesion,"
+              . "(case when p.sexo='M' then (
+  case when p.estado_civil='SO' then 'SOLTERO' 
+   when p.estado_civil='CA' then 'CASADO' 
+   when p.estado_civil='SE' then 'SEPARADO' 
+   when p.estado_civil='DI' then 'DIVORCIADO' 
+   when p.estado_civil='VI' then 'VIUDO' 
+   when p.estado_civil='ME' then 'MENOR'  end ) 
+  else  (
+  case when p.estado_civil='SO' then 'SOLTERA' 
+   when p.estado_civil='CA' then 'CASADA' 
+   when p.estado_civil='SE' then 'SEPARADA' 
+   when p.estado_civil='DI' then 'DIVORCIADA' 
+   when p.estado_civil='VI' then 'VIUDA' 
+   when p.estado_civil='ME' then 'MENOR'  end )     end ) as estado_civil,p.domicilio,coalesce(p.barrio_ciudad,'****') as barrio_ciudad,"
+              . "p.telefono,p.celular,  p.nacio_orig "
+           . "from {$this->tabla} p join nacio n on n.idnacio=p.nacio "
+           . "join nacio n1 on n1.idnacio=p.nacio_orig "
+                   . " join profesiones pr on pr.idprofesiones=p.profesion "
+                   . "where p.nrodoc='$arg' ";
        $quer= $this->db->query( $sql);  
   $res= $quer->row();   return $res; 
   }

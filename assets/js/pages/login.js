@@ -77,8 +77,8 @@ var Login = function() {
                 },
                 rules: {
                     'login-email': {
-                        required: true,
-                        email: true
+                        required: true
+                
                     },
                     'login-password': {
                         required: true,
